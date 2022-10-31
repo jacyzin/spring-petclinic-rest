@@ -1,0 +1,25 @@
+---
+apiVersion: v3
+kind: Deployment
+metadata:
+ name: spring-petclinic-rest
+ namespace: default
+ spec:
+ replicas: 1
+template:
+ metadata:
+ labels:
+ k8s - app: spring-petclinic-rest
+ spec:
+ containers:
+ -name: spring-petclinic-rest
+ image: jacyzin/spring-petclinic-rest:1.0
+ imagePullPolicy: "IfNotPresent"
+ports:
+ -containerPort: 9966
+volumeMounts:
+ -mountPath: /data
+ name: spring-petclinic-rest
+ volumes:
+ -name: spring-petclinic-rest
+path: spring-petclinic-rest
